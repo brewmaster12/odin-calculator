@@ -1,1 +1,18 @@
- 
+* {
+    outline: 2px solid red;
+} 
+
+#container {
+    width: 425px;
+    height: 550px;
+    margin: auto;
+}
+
+#display {
+    height: 100px;
+}
+
+button {
+    height: 75px;
+    width: 100px;
+}
