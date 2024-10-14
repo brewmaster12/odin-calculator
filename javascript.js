@@ -78,7 +78,9 @@ btn9.onclick = () => pressNumberButton("9");
 
 // Decimal button
 const btnDecimal = document.querySelector("#decimal");
-btnDecimal.onclick = () => pressNumberButton(".");
+btnDecimal.addEventListener("click", () => {
+    if (!displayValue.includes(".")) pressNumberButton(".");
+});
 
 // Percentage button
 const btnPercentage = document.querySelector("#percentage");
@@ -139,7 +141,6 @@ btnDivide.onclick = () => opFunction("divide");
 
 /*
 To do:
-    1. Add functionality to other buttons
     2. CSS
     3. Keyboard support?
 */
