@@ -80,6 +80,13 @@ btn9.onclick = () => pressNumberButton("9");
 const btnDecimal = document.querySelector("#decimal");
 btnDecimal.onclick = () => pressNumberButton(".");
 
+// Percentage button
+const btnPercentage = document.querySelector("#percentage");
+btnPercentage.addEventListener("click", () => {
+    displayValue *= 0.01;
+    display.textContent = `${displayValue}`;
+});
+
 
 // Equals function
 function equals() {
