@@ -78,16 +78,20 @@ btn9.onclick = () => pressNumberButton("9");
 
 
 function equals() {
-    if (firstNumber) {
+    if (firstNumber && operator) {
+
         secondNumber = displayValue;
         displayValue = operate(firstNumber, secondNumber, operator);
+    
+        // If divide by zero
+        if (displayValue === Infinity) {
+            display.textContent = "nice try ;)";
+            clear();
+        } else {
+            display.textContent = `${displayValue}`;
+        }
 
-    if (!displayValue  || displayValue === Infinity) {
-        display.textContent = "nice try ;)";
-        clear();
-    } else {
-        display.textContent = `${displayValue}`;
-    }
+        operator = undefined;
     }
 };
 
@@ -100,8 +104,8 @@ btnEquals.onclick = () => equals();
 function opFunction(string) {
     equals();
     firstNumber = displayValue;
-    operator = string;
     displayValue = 0;
+    operator = string;
 }
 
 const btnAdd = document.querySelector("#add");
@@ -115,9 +119,3 @@ btnMultiply.onclick = () => opFunction("multiply");
 
 const btnDivide = document.querySelector("#divide");
 btnDivide.onclick = () => opFunction("divide");
-
-
-/* To fix:
-    1. Multiple presses of equals
-    2. Pressing operation after an equals
-*/
