@@ -1,10 +1,8 @@
-// Step 1
 function add(a, b) {return a+b;}
 function subtract(a, b) {return a-b;}
 function multiply(a, b) {return a*b;}
 function divide(a, b) {return a/b;}
 
-// Step 3
 function operate(n1, n2, operation) {
     n1 = Number(n1);
     n2 = Number(n2);
@@ -16,12 +14,9 @@ function operate(n1, n2, operation) {
     }
 }
 
-// Step 2
 let firstNumber;
 let operator;
 let secondNumber;
-
-// Step 5
 let displayValue = 0;
 
 const display = document.querySelector("#display");
@@ -29,76 +24,81 @@ display.textContent = `${displayValue}`;
 
 
 // AC button
-const clear = document.querySelector("#clear");
-clear.addEventListener("click", () => {
+function clear() {
     firstNumber = undefined;
     operator = undefined;
     secondNumber = undefined;
     displayValue = 0;
+}
+
+const btnAc = document.querySelector("#clear");
+btnAc.addEventListener("click", () => {
+    clear();
     display.textContent = `${displayValue}`;
 });
 
 
 // Number buttons
-function numFunction(numString) {
-    if (displayValue == 0) {
-        displayValue = "";
-    };
+function pressNumberButton(numString) {
+    if (displayValue == 0) {displayValue = "";};
     displayValue += numString;
     display.textContent = `${displayValue}`;
 };
 
 
 const btn0 = document.querySelector("#btn0");
-btn0.onclick = () => numFunction("0");
+btn0.onclick = () => pressNumberButton("0");
 
 const btn1 = document.querySelector("#btn1");
-btn1.onclick = () => numFunction("1");
+btn1.onclick = () => pressNumberButton("1");
 
 const btn2 = document.querySelector("#btn2");
-btn2.onclick = () => numFunction("2");
+btn2.onclick = () => pressNumberButton("2");
 
 const btn3 = document.querySelector("#btn3");
-btn3.onclick = () => numFunction("3");
+btn3.onclick = () => pressNumberButton("3");
 
 const btn4 = document.querySelector("#btn4");
-btn4.onclick = () => numFunction("4");
+btn4.onclick = () => pressNumberButton("4");
 
 const btn5 = document.querySelector("#btn5");
-btn5.onclick = () => numFunction("5");
+btn5.onclick = () => pressNumberButton("5");
 
 const btn6 = document.querySelector("#btn6");
-btn6.onclick = () => numFunction("6");
+btn6.onclick = () => pressNumberButton("6");
 
 const btn7 = document.querySelector("#btn7");
-btn7.onclick = () => numFunction("7");
+btn7.onclick = () => pressNumberButton("7");
 
 const btn8 = document.querySelector("#btn8");
-btn8.onclick = () => numFunction("8");
+btn8.onclick = () => pressNumberButton("8");
 
 const btn9 = document.querySelector("#btn9");
-btn9.onclick = () => numFunction("9");
+btn9.onclick = () => pressNumberButton("9");
 
 
-
-
-
-// Equals button
 function equals() {
     if (firstNumber) {
-    secondNumber = displayValue;
-    displayValue = operate(firstNumber, secondNumber, operator);
-    display.textContent = `${displayValue}`;
+        secondNumber = displayValue;
+        displayValue = operate(firstNumber, secondNumber, operator);
+
+    if (!displayValue  || displayValue === Infinity) {
+        display.textContent = "nice try ;)";
+        clear();
+    } else {
+        display.textContent = `${displayValue}`;
+    }
     }
 };
 
+// Equals button
 const btnEquals = document.querySelector("#equals");
 btnEquals.onclick = () => equals();
 
 
 // Operator buttons
 function opFunction(string) {
-    if (firstNumber) equals();
+    equals();
     firstNumber = displayValue;
     operator = string;
     displayValue = 0;
@@ -115,3 +115,9 @@ btnMultiply.onclick = () => opFunction("multiply");
 
 const btnDivide = document.querySelector("#divide");
 btnDivide.onclick = () => opFunction("divide");
+
+
+/* To fix:
+    1. Multiple presses of equals
+    2. Pressing operation after an equals
+*/
