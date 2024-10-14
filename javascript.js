@@ -87,6 +87,12 @@ btnPercentage.addEventListener("click", () => {
     display.textContent = `${displayValue}`;
 });
 
+// Backspace button
+const btnBackspace = document.querySelector("#backspace");
+btnBackspace.addEventListener("click", () => {
+    displayValue = displayValue.slice(0, -1);
+    display.textContent = `${displayValue}`;
+});
 
 // Equals function
 function equals() {
