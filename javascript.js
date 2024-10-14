@@ -76,10 +76,14 @@ btn8.onclick = () => pressNumberButton("8");
 const btn9 = document.querySelector("#btn9");
 btn9.onclick = () => pressNumberButton("9");
 
+// Decimal button
+const btnDecimal = document.querySelector("#decimal");
+btnDecimal.onclick = () => pressNumberButton(".");
 
+
+// Equals function
 function equals() {
     if (firstNumber && operator) {
-
         secondNumber = displayValue;
         displayValue = operate(firstNumber, secondNumber, operator);
     
@@ -119,3 +123,10 @@ btnMultiply.onclick = () => opFunction("multiply");
 
 const btnDivide = document.querySelector("#divide");
 btnDivide.onclick = () => opFunction("divide");
+
+/*
+To do:
+    1. Add functionality to other buttons
+    2. CSS
+    3. Keyboard support?
+*/
