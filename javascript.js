@@ -33,86 +33,44 @@ clear.addEventListener("click", () => {
 
 
 // Number buttons
+function numFunction(numString) {
+    if (displayValue == 0) {
+        displayValue = "";
+    };
+    displayValue += numString;
+    display.textContent = `${displayValue}`;
+};
+
+
 const btn0 = document.querySelector("#btn0");
-btn0.addEventListener("click", () => {
-    if (displayValue == 0) {
-        displayValue = "";
-    };
-    displayValue += "0";
-    display.textContent = `${displayValue}`;
-});
+btn0.onclick = () => numFunction("0");
+
 const btn1 = document.querySelector("#btn1");
-btn1.addEventListener("click", () => {
-    if (displayValue == 0) {
-        displayValue = "";
-    };
-    displayValue += "1";
-    display.textContent = `${displayValue}`;
-});
+btn1.onclick = () => numFunction("1");
+
 const btn2 = document.querySelector("#btn2");
-btn2.addEventListener("click", () => {
-    if (displayValue == 0) {
-        displayValue = "";
-    }
-    displayValue += "2";
-    display.textContent = `${displayValue}`;
-});
+btn2.onclick = () => numFunction("2");
+
 const btn3 = document.querySelector("#btn3");
-btn3.addEventListener("click", () => {
-    if (displayValue == 0) {
-        displayValue = "";
-    }
-    displayValue += "3";
-    display.textContent = `${displayValue}`;
-});
+btn3.onclick = () => numFunction("3");
+
 const btn4 = document.querySelector("#btn4");
-btn4.addEventListener("click", () => {
-    if (displayValue == 0) {
-        displayValue = "";
-    }
-    displayValue += "4";
-    display.textContent = `${displayValue}`;
-});
+btn4.onclick = () => numFunction("4");
+
 const btn5 = document.querySelector("#btn5");
-btn5.addEventListener("click", () => {
-    if (displayValue == 0) {
-        displayValue = "";
-    }
-    displayValue += "5";
-    display.textContent = `${displayValue}`;
-});
+btn5.onclick = () => numFunction("5");
+
 const btn6 = document.querySelector("#btn6");
-btn6.addEventListener("click", () => {
-    if (displayValue == 0) {
-        displayValue = "";
-    }
-    displayValue += "6";
-    display.textContent = `${displayValue}`;
-});
+btn6.onclick = () => numFunction("6");
+
 const btn7 = document.querySelector("#btn7");
-btn7.addEventListener("click", () => {
-    if (displayValue == 0) {
-        displayValue = "";
-    }
-    displayValue += "7";
-    display.textContent = `${displayValue}`;
-});
+btn7.onclick = () => numFunction("7");
+
 const btn8 = document.querySelector("#btn8");
-btn8.addEventListener("click", () => {
-    if (displayValue == 0) {
-        displayValue = "";
-    }
-    displayValue += "8";
-    display.textContent = `${displayValue}`;
-});
+btn8.onclick = () => numFunction("8");
+
 const btn9 = document.querySelector("#btn9");
-btn9.addEventListener("click", () => {
-    if (displayValue == 0) {
-        displayValue = "";
-    }
-    displayValue += "9";
-    display.textContent = `${displayValue}`;
-});
+btn9.onclick = () => numFunction("9");
 
 
 // Step 2
@@ -121,37 +79,33 @@ let operator;
 let secondNumber;
 
 
-// Operator buttons
-const btnAdd = document.querySelector("#add");
-btnAdd.addEventListener("click", () => {
-    firstNumber = displayValue;
-    operator = "add";
-    displayValue = 0;
-});
-const btnSubtract = document.querySelector("#subtract");
-btnSubtract.addEventListener("click", () => {
-    firstNumber = displayValue;
-    operator = "subtract";
-    displayValue = 0;
-});
-const btnMultiply = document.querySelector("#multiply");
-btnMultiply.addEventListener("click", () => {
-    firstNumber = displayValue;
-    operator = "multiply";
-    displayValue = 0;
-});
-const btnDivide = document.querySelector("#divide");
-btnDivide.addEventListener("click", () => {
-    firstNumber = displayValue;
-    operator = "divide";
-    displayValue = 0;
-});
-
-
 // Equals button
-const equals = document.querySelector("#equals");
-equals.addEventListener("click", () => {
+function equals() {
     secondNumber = displayValue;
     displayValue = operate(firstNumber, secondNumber, operator);
     display.textContent = `${displayValue}`;
-});
+};
+
+const btnEquals = document.querySelector("#equals");
+btnEquals.onclick = () => equals();
+
+
+// Operator buttons
+function opFunction(string) {
+    if (firstNumber) equals();
+    firstNumber = displayValue;
+    operator = string;
+    displayValue = 0;
+}
+
+const btnAdd = document.querySelector("#add");
+btnAdd.onclick = () => opFunction("add");
+
+const btnSubtract = document.querySelector("#subtract");
+btnSubtract.onclick = () => opFunction("subtract");
+
+const btnMultiply = document.querySelector("#multiply");
+btnMultiply.onclick = () => opFunction("multiply");
+
+const btnDivide = document.querySelector("#divide");
+btnDivide.onclick = () => opFunction("divide");
