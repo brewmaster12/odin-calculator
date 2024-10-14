@@ -16,6 +16,10 @@ function operate(n1, n2, operation) {
     }
 }
 
+// Step 2
+let firstNumber;
+let operator;
+let secondNumber;
 
 // Step 5
 let displayValue = 0;
@@ -27,6 +31,9 @@ display.textContent = `${displayValue}`;
 // AC button
 const clear = document.querySelector("#clear");
 clear.addEventListener("click", () => {
+    firstNumber = undefined;
+    operator = undefined;
+    secondNumber = undefined;
     displayValue = 0;
     display.textContent = `${displayValue}`;
 });
@@ -73,17 +80,16 @@ const btn9 = document.querySelector("#btn9");
 btn9.onclick = () => numFunction("9");
 
 
-// Step 2
-let firstNumber;
-let operator;
-let secondNumber;
+
 
 
 // Equals button
 function equals() {
+    if (firstNumber) {
     secondNumber = displayValue;
     displayValue = operate(firstNumber, secondNumber, operator);
     display.textContent = `${displayValue}`;
+    }
 };
 
 const btnEquals = document.querySelector("#equals");
