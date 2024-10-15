@@ -1,19 +1,17 @@
-function add(a, b) {return a+b;}
-function subtract(a, b) {return a-b;}
-function multiply(a, b) {return a*b;}
-function divide(a, b) {return a/b;}
-
+// Operation function
 function operate(n1, n2, operation) {
     n1 = Number(n1);
     n2 = Number(n2);
     switch (operation) {
-        case "add": return add(n1, n2);
-        case "subtract": return subtract(n1, n2);
-        case "multiply": return multiply(n1, n2);
-        case "divide": return divide(n1, n2);
+        case "add": return (n1+n2);
+        case "subtract": return (n1-n2);
+        case "multiply": return (n1*n2);
+        case "divide": return (n1/n2);
     }
 }
 
+
+// Variables
 let firstNumber;
 let operator;
 let secondNumber;
@@ -39,55 +37,50 @@ btnAc.addEventListener("click", () => {
 
 
 // Number buttons
-function pressNumberButton(numString) {
+function numberButton(numString) {
     if (displayValue == 0) {displayValue = "";};
-    displayValue += numString;
-    display.textContent = `${displayValue}`;
+    if (displayValue.length < 8) {
+        displayValue += numString;
+        display.textContent = `${displayValue}`;
+    }
 };
 
-
 const btn0 = document.querySelector("#btn0");
-btn0.onclick = () => pressNumberButton("0");
-
+btn0.onclick = () => numberButton("0");
 const btn1 = document.querySelector("#btn1");
-btn1.onclick = () => pressNumberButton("1");
-
+btn1.onclick = () => numberButton("1");
 const btn2 = document.querySelector("#btn2");
-btn2.onclick = () => pressNumberButton("2");
-
+btn2.onclick = () => numberButton("2");
 const btn3 = document.querySelector("#btn3");
-btn3.onclick = () => pressNumberButton("3");
-
+btn3.onclick = () => numberButton("3");
 const btn4 = document.querySelector("#btn4");
-btn4.onclick = () => pressNumberButton("4");
-
+btn4.onclick = () => numberButton("4");
 const btn5 = document.querySelector("#btn5");
-btn5.onclick = () => pressNumberButton("5");
-
+btn5.onclick = () => numberButton("5");
 const btn6 = document.querySelector("#btn6");
-btn6.onclick = () => pressNumberButton("6");
-
+btn6.onclick = () => numberButton("6");
 const btn7 = document.querySelector("#btn7");
-btn7.onclick = () => pressNumberButton("7");
-
+btn7.onclick = () => numberButton("7");
 const btn8 = document.querySelector("#btn8");
-btn8.onclick = () => pressNumberButton("8");
-
+btn8.onclick = () => numberButton("8");
 const btn9 = document.querySelector("#btn9");
-btn9.onclick = () => pressNumberButton("9");
+btn9.onclick = () => numberButton("9");
+
 
 // Decimal button
 const btnDecimal = document.querySelector("#decimal");
 btnDecimal.addEventListener("click", () => {
-    if (!displayValue.includes(".")) pressNumberButton(".");
+    if (!displayValue.includes(".")) numberButton(".");
 });
+
 
 // Percentage button
 const btnPercentage = document.querySelector("#percentage");
 btnPercentage.addEventListener("click", () => {
     displayValue *= 0.01;
-    display.textContent = `${displayValue}`;
+    display.textContent = `${(parseFloat(displayValue.toFixed(8)))}`;
 });
+
 
 // Backspace button
 const btnBackspace = document.querySelector("#backspace");
@@ -96,7 +89,8 @@ btnBackspace.addEventListener("click", () => {
     display.textContent = `${displayValue}`;
 });
 
-// Equals function
+
+// Equals button
 function equals() {
     if (firstNumber && operator) {
         secondNumber = displayValue;
@@ -107,20 +101,20 @@ function equals() {
             display.textContent = "nice try ;)";
             clear();
         } else {
-            display.textContent = `${displayValue}`;
+            display.textContent = `${(parseFloat(displayValue.toFixed(8)))}`;
         }
 
+        // Reset the operator to prevent bugginess with the equals button
         operator = undefined;
     }
 };
 
-// Equals button
 const btnEquals = document.querySelector("#equals");
 btnEquals.onclick = () => equals();
 
 
 // Operator buttons
-function opFunction(string) {
+function operatorButton(string) {
     equals();
     firstNumber = displayValue;
     displayValue = 0;
@@ -128,19 +122,20 @@ function opFunction(string) {
 }
 
 const btnAdd = document.querySelector("#add");
-btnAdd.onclick = () => opFunction("add");
+btnAdd.onclick = () => operatorButton("add");
 
 const btnSubtract = document.querySelector("#subtract");
-btnSubtract.onclick = () => opFunction("subtract");
+btnSubtract.onclick = () => operatorButton("subtract");
 
 const btnMultiply = document.querySelector("#multiply");
-btnMultiply.onclick = () => opFunction("multiply");
+btnMultiply.onclick = () => operatorButton("multiply");
 
 const btnDivide = document.querySelector("#divide");
-btnDivide.onclick = () => opFunction("divide");
+btnDivide.onclick = () => operatorButton("divide");
 
 /*
 To do:
+    1. Number of decimal places
     2. CSS
     3. Keyboard support?
 */
