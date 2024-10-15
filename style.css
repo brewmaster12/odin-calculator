@@ -1,22 +1,59 @@
-* {
-    outline: 2px solid red;
-} 
+/* * {
+    outline: 1px solid red;
+}  */
 
 #container {
     width: 425px;
-    height: 550px;
+    height: 540px;
     margin: auto;
+    background-color: black;
+    border-radius: 25px;
+    padding-top: 5px;
 }
 
 #display {
     height: 100px;
-    font-size: 50px;
     display: flex;
     flex-direction: row-reverse;
     align-items: end;
+    background-color: gray;
+    margin: 10px;
+    border-radius: 5px;
+    font-family: monospace;
+    font-size: 75px;
+    font-weight: bold;
+}
+
+#buttonsContainer {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin: 10px;
+    gap: 4px;
 }
 
 button {
     height: 75px;
-    width: 100px;
+    width: 95px;
+    flex: auto;
+    border-radius: 5px;
+    font-family: monospace;
+    font-size: 30px;
+    border: 0px;
+}
+
+#zero {
+    width: 197px;
+}
+
+.numberButton, #decimal {
+    background-color: darkcyan;
+}
+
+.miscButton {
+    background-color: cornflowerblue;
+}
+
+.operatorButton, #equals {
+    background-color: orange;
 }

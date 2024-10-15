@@ -119,4 +119,6 @@ opButton.forEach((button) => {
 To do:
     2. CSS
     3. Keyboard support?
+    4. Considered consolidating ALL buttons into one query selector, then using a "switch" to separate
+        them out, but not sure if this would even make is simpler or more readable ... Try it on another branch maybe.
 */
