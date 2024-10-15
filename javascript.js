@@ -45,8 +45,6 @@ function numberButton(numString) {
     }
 };
 
-
-// Number buttons
 const numButton = document.querySelectorAll(".numberButton");
 numButton.forEach((button) => {
     button.addEventListener("click", () => {
@@ -109,17 +107,13 @@ function operatorButton(string) {
     operator = string;
 }
 
-const btnAdd = document.querySelector("#add");
-btnAdd.onclick = () => operatorButton("add");
+const opButton = document.querySelectorAll(".operatorButton");
+opButton.forEach((button) => {
+    button.addEventListener("click", () => {
+        operatorButton(button.id);
+    })
+});
 
-const btnSubtract = document.querySelector("#subtract");
-btnSubtract.onclick = () => operatorButton("subtract");
-
-const btnMultiply = document.querySelector("#multiply");
-btnMultiply.onclick = () => operatorButton("multiply");
-
-const btnDivide = document.querySelector("#divide");
-btnDivide.onclick = () => operatorButton("divide");
 
 /*
 To do:
