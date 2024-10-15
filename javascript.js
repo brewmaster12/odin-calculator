@@ -45,26 +45,14 @@ function numberButton(numString) {
     }
 };
 
-const btn0 = document.querySelector("#btn0");
-btn0.onclick = () => numberButton("0");
-const btn1 = document.querySelector("#btn1");
-btn1.onclick = () => numberButton("1");
-const btn2 = document.querySelector("#btn2");
-btn2.onclick = () => numberButton("2");
-const btn3 = document.querySelector("#btn3");
-btn3.onclick = () => numberButton("3");
-const btn4 = document.querySelector("#btn4");
-btn4.onclick = () => numberButton("4");
-const btn5 = document.querySelector("#btn5");
-btn5.onclick = () => numberButton("5");
-const btn6 = document.querySelector("#btn6");
-btn6.onclick = () => numberButton("6");
-const btn7 = document.querySelector("#btn7");
-btn7.onclick = () => numberButton("7");
-const btn8 = document.querySelector("#btn8");
-btn8.onclick = () => numberButton("8");
-const btn9 = document.querySelector("#btn9");
-btn9.onclick = () => numberButton("9");
+
+// Number buttons
+const numButton = document.querySelectorAll(".numberButton");
+numButton.forEach((button) => {
+    button.addEventListener("click", () => {
+        numberButton(button.textContent);
+    })
+});
 
 
 // Decimal button
@@ -135,7 +123,6 @@ btnDivide.onclick = () => operatorButton("divide");
 
 /*
 To do:
-    1. Number of decimal places
     2. CSS
     3. Keyboard support?
 */
