@@ -22,6 +22,7 @@
     font-family: monospace;
     font-size: 75px;
     font-weight: bold;
+    padding-right: 10px;
 }
 
 #buttonsContainer {
@@ -40,6 +41,10 @@ button {
     font-family: monospace;
     font-size: 30px;
     border: 0px;
+}
+
+button:active {
+    opacity: 90%;
 }
 
 #zero {

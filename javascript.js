@@ -64,7 +64,7 @@ btnDecimal.addEventListener("click", () => {
 const btnPercentage = document.querySelector("#percentage");
 btnPercentage.addEventListener("click", () => {
     displayValue *= 0.01;
-    display.textContent = `${(parseFloat(displayValue.toFixed(8)))}`;
+    display.textContent = `${(parseFloat(displayValue.toFixed(7)))}`;
 });
 
 
@@ -84,7 +84,7 @@ function equals() {
     
         // If divide by zero
         if (displayValue === Infinity) {
-            display.textContent = "nice try ;)";
+            display.textContent = "nice try";
             clear();
         } else {
             display.textContent = `${(parseFloat(displayValue.toFixed(8)))}`;
@@ -117,7 +117,6 @@ opButton.forEach((button) => {
 
 /*
 To do:
-    2. CSS
     3. Keyboard support?
     4. Considered consolidating ALL buttons into one query selector, then using a "switch" to separate
         them out, but not sure if this would even make is simpler or more readable ... Try it on another branch maybe.
