@@ -36,23 +36,6 @@ btnAc.addEventListener("click", () => {
 });
 
 
-// Number buttons
-function numberButton(numString) {
-    if (displayValue == 0) {displayValue = "";};
-    if (displayValue.length < 8) {
-        displayValue += numString;
-        display.textContent = `${displayValue}`;
-    }
-};
-
-const numButton = document.querySelectorAll(".numberButton");
-numButton.forEach((button) => {
-    button.addEventListener("click", () => {
-        numberButton(button.textContent);
-    })
-});
-
-
 // Decimal button
 const btnDecimal = document.querySelector("#decimal");
 btnDecimal.addEventListener("click", () => {
@@ -115,9 +98,28 @@ opButton.forEach((button) => {
 });
 
 
-/*
-To do:
-    3. Keyboard support?
-    4. Considered consolidating ALL buttons into one query selector, then using a "switch" to separate
-        them out, but not sure if this would even make is simpler or more readable ... Try it on another branch maybe.
+// Number buttons
+function numberButton(numString) {
+    if (displayValue == 0) {displayValue = "";};
+    if (displayValue.length < 8) {
+        displayValue += numString;
+        display.textContent = `${displayValue}`;
+    }
+};
+
+const numButton = document.querySelectorAll(".numberButton");
+numButton.forEach((button) => {
+    button.addEventListener("click", () => {
+        numberButton(button.textContent);
+    })
+});
+
+// Keyboard support for number buttons
+document.addEventListener("keypress", (event) => {
+    if (!isNaN(event.key)) numberButton(event.key);
+    });
+
+/* Need to add keyboard support for other buttons.
+    Also thinking about consolidating all buttons into fewer events.
+    Would probably be easier to integrate keyboard once I've done that.
 */
